@@ -1,0 +1,45 @@
+_G.SecureMode = true
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+
+
+local Window = Rayfield:CreateWindow({
+	Name = "Drive World by JAKSKJ#0001 Lol123#0030",
+	LoadingTitle = "Drive World",
+	LoadingSubtitle = "Lol123#0030 JAKSKJ#0001",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = Farming, -- Create a custom folder for your hub/game
+		FileName = ""
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	
+})
+local Tab = Window:CreateTab("Main", 4483362458)
+local Section = Tab:CreateSection("Farming")
+local Toggle = Tab:CreateToggle({
+    Name = "Inf Money",
+    CurrentValue = false,
+    Flag = "Auto Click", 
+    Callback = function(Value)
+        _G.autoTap = Value
+    end
+})
+
+spawn(function()
+    while wait() do
+      if _G.autoTap then
+        game:GetService("ReplicatedStorage").Systems.Score.Begin:FireServer()
+wait(0.01)
+local args = {
+    [1] = 501.4540408278017
+}
+
+game:GetService("ReplicatedStorage").Systems.Score.Redeem:FireServer(unpack(args))
+        wait(0.01)
+      end
+  end
+end)
